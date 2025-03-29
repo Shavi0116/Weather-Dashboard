@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import './App.css'
-import SearchBar from './pages/SearchBar'
-import axios from 'axios'
-import WeatherCard from './pages/WeatherCard'
-
+import { useState } from "react";
+import "./App.css";
+import SearchBar from "./pages/SearchBar";
+import axios from "axios";
+import WeatherCard from "./pages/WeatherCard";
+import Background from "./pages/Background"
 function App() {
-  const [weather, setWeather]=useState(null)
-  const [loading, setLoading]=useState(null)
-  const [err, setErr]=useState(null)
+  const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(null);
+  const [err, setErr] = useState(null);
 
   const fetchweather = async (city) => {
     setLoading(true);
@@ -19,23 +19,24 @@ function App() {
       );
       setWeather(response.data);
     } catch (er) {
-      setErr("City not found or API error",er);
+      setErr("An error occured",er);
       setWeather(null);
     }
     setLoading(false);
   };
-  
+
   return (
     <>
-      <div className='min-h-screen flex flex-col items-center justify-center bg-gray-100'>
-        <h1 className='text-3x1 font-bold mb-4'>Weather Dashboard</h1>
+      <Background />
+      <div className="relative min-h-screen flex flex-col items-center justify-center">
+        <h1 className="text-3xl font-bold text-white mb-4">Weather Dashboard</h1>
         <SearchBar fetchweather={fetchweather} />
-        {loading ? <p>Loading...</p> : null}
-        {err ? <p className='text-red-500 mt-5'>{err}</p> : null}
-        {weather && <WeatherCard weather={weather}/>}
+        {loading && <p className="text-white">Loading...</p>}
+        {err && <p className="text-red-500 mt-5">{err}</p>}
+        {weather && <WeatherCard weather={weather} />}
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
