@@ -25,7 +25,7 @@ const SearchBar = ({ fetchweather }) => {
           placeholder="Enter the city name"
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          onKeyDown={handleKeyDown} // Listen for Enter key press
+          onKeyDown={handleKeyDown} 
         />
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-600"
