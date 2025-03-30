@@ -13,13 +13,13 @@ function App() {
     setLoading(true);
     setErr(null);
     try {
-      const API_KEY = "861d8a303db33a2d5affc12dff0037e8"; // Your actual API key
+      const API_KEY = import.meta.env.VITE_API_KEY; 
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
       );
       setWeather(response.data);
     } catch (er) {
-      setErr("An error occured",er);
+      setErr("An error occurred", er);
       setWeather(null);
     }
     setLoading(false);
