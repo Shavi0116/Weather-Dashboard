@@ -3,7 +3,8 @@ import "./App.css";
 import SearchBar from "./pages/SearchBar";
 import axios from "axios";
 import WeatherCard from "./pages/WeatherCard";
-import Background from "./pages/Background"
+import Background from "./pages/Background";
+
 function App() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -13,13 +14,16 @@ function App() {
     setLoading(true);
     setErr(null);
     try {
-      const API_KEY = import.meta.env.VITE_API_KEY; 
+      const API_KEY = import.meta.env.VITE_API_KEY; // Load API key from .env
+      console.log("Using API Key:", API_KEY); // Debugging
+
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
       );
       setWeather(response.data);
     } catch (er) {
-      setErr("An error occurred", er);
+      console.error("API Error:", er);
+      setErr("An error occurred while fetching weather data.");
       setWeather(null);
     }
     setLoading(false);
