@@ -45,19 +45,6 @@ The Weather Dashboard is a React-based web application that provides real-time w
    ```
 6. Open `http://localhost:5173/` in your browser.
 
-## Deployment on Netlify
-
-1. Push your project to GitHub.
-2. Go to [Netlify](https://www.netlify.com/) and log in.
-3. Click **New Site from Git** and select your repository.
-4. Configure the build settings:
-   - **Build Command:** `npm run build`
-   - **Publish Directory:** `dist`
-5. Set the environment variable for the API key in Netlify:
-   - Navigate to **Site Settings > Environment Variables**.
-   - Add `VITE_API_KEY=your_openweathermap_api_key`.
-6. Click **Deploy Site**.
-
 ## Usage
 1. Enter a city name in the search bar.
 2. The application will display the current weather conditions for that city.
